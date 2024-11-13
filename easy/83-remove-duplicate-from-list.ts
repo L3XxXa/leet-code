@@ -13,8 +13,8 @@
 
 function deleteDuplicates(head: ListNode | null): ListNode | null {
     let curr = head
-    while(curr?.next) {
-        if (curr.val === curr.next.val) {
+    while(curr) {
+        while (curr.val === curr.next?.val) {
             curr.next = curr.next.next
         }
         curr = curr.next

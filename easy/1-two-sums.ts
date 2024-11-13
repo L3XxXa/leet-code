@@ -1,13 +1,15 @@
 function twoSum(nums: number[], target: number): number[] {
+    const idxes = new Map<number, number>()
     for (let i = 0; i < nums.length; ++i) {
-        if (nums.includes(target - nums[i])) {
-            const item = nums.findIndex(item => item === target - nums[i])
-            if (i !== item) {
-                return [i, item!]
-            }
+        idxes.set(nums[i], i)
+    }
+    for (let i = 0; i < nums.length; ++i) {
+        const diff = target - nums[i] 
+        if (idxes.get(diff) !== i && idxes.has(diff)) {
+            return [i, idxes.get(diff)!]
         }
     }
-    return [-1, -1]
+    return []
 }
 
-console.log(twoSum([3,2,4], 6))
+console.log(twoSum([2,5,5,11], 10))
